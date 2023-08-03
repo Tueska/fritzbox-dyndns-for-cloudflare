@@ -1,0 +1,23 @@
+{
+  "name": "fritzbox-dyndns-cloudflare",
+  "version": "1.0.0",
+  "description": "Docker Container to Update Cloudflare DNS Entry to Home IP Address in Fritz Boxes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "dyndns",
+    "cloudflare",
+    "node",
+    "docker"
+  ],
+  "author": "Tueska",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "type": "module"
+}
