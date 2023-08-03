@@ -10,7 +10,7 @@ You can run the Docker Image from ghcr.io using the following command:
 
 ```docker
 docker run --name cloudflare-dyndns \
- -p 3000:3000  \
+ -p 3080:3080  \
  ghcr.io/tueska/fritzbox-dyndns-for-cloudflare:main
 ```
 
@@ -22,13 +22,13 @@ The container runs a Node application that listens for incoming requests and han
 - Endpoint: /updateDNS
 - Query Parameters:
 
-    | Parameter                         | FRITZ!Box Placeholder      | Required | Explaination |
-    |-------------------------------|------------------------|---------|-----|
-    | token                      | `<pass>` or `<passwd>`          | yes | Cloudflare API Token|
-    | domain                      | `<domain>`  | yes | Domain you want to set |
-    | ipaddr                  |  `<ipaddr>` | yes | IPv4 Address of your Router |
-    | ip6addr| `<ip6addr>`             | optional | IPv6 Address of your Router |
-    | username | `<username>`            | optional | If provided name is `proxy` the DNS Record gets proxied through Cloudflare |
+    | Parameter | FRITZ!Box Placeholder  | Required | Explaination |
+    |-----------|------------------------|----------|----------------------------------------------------------------------------|
+    | token     | `<pass>` or `<passwd>` | yes      | Cloudflare API Token                                                       |
+    | domain    | `<domain>`             | yes      | Domain you want to set                                                     |
+    | ipaddr    | `<ipaddr>`             | yes      | IPv4 Address of your Router                                                |
+    | ip6addr   | `<ip6addr>`            | optional | IPv6 Address of your Router                                                |
+    | username  | `<username>`           | optional | If provided name is `proxy` the DNS Record gets proxied through Cloudflare |
 
 ## Usage with FRITZ!Box Router
 
