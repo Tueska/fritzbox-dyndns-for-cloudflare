@@ -10,6 +10,22 @@ app.use((req, res, next) => {
 });
 
 app.get('/updateDNS', async (req, res) => {
+    updateDNS(req, res);
+});
+
+app.post('/updateDNS', async (req, res) => {
+    updateDNS(req, res);
+});
+
+app.patch('/updateDNS', async (req, res) => {
+    updateDNS(req, res);
+});
+
+app.put('/updateDNS', async (req, res) => {
+    updateDNS(req, res);
+});
+
+async function updateDNS(req, res) {
     // Get Zone ID from Cloudflare API using domain name
     const ZONEID = await getZoneID(req.query.token, req.query.domain);
     if (ZONEID === null) {
@@ -29,7 +45,7 @@ app.get('/updateDNS', async (req, res) => {
     createZoneRecord(req.query.token, ZONEID, RECORDIDS, req.query.ipaddr, req.query.ip6addr, req.query.domain, proxy);
 
     res.send('');
-});
+}
 
 async function getZoneID(token, domain) {
     // Get Zone ID from Cloudflare API using domain name
