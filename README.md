@@ -22,13 +22,14 @@ The container runs a Node application that listens for incoming requests and han
 - Endpoint: /updateDNS
 - Query Parameters:
 
-    | Parameter | FRITZ!Box Placeholder  | Required | Explaination |
-    |-----------|------------------------|----------|----------------------------------------------------------------------------|
-    | token     | `<pass>` or `<passwd>` | yes      | Cloudflare API Token                                                       |
-    | domain    | `<domain>`             | yes      | Domain you want to set                                                     |
-    | ipaddr    | `<ipaddr>`             | yes      | IPv4 Address of your Router                                                |
-    | ip6addr   | `<ip6addr>`            | optional | IPv6 Address of your Router                                                |
-    | username  | `<username>`           | optional | If provided name is `proxy` the DNS Record gets proxied through Cloudflare |
+  | Parameter | FRITZ!Box Placeholder  | Required | Explaination                                                               |
+  | --------- | ---------------------- | -------- | -------------------------------------------------------------------------- |
+  | token     | `<pass>` or `<passwd>` | yes      | Cloudflare API Token                                                       |
+  | domain    | `<domain>`             | yes      | Domain you want to set                                                     |
+  | ipaddr    | `<ipaddr>`             | yes      | IPv4 Address of your Router                                                |
+  | ip6prefix | `<ip6lanprefix>`       | optional | IPv6 Prefix of your Router                                                 |
+  | ip6intid  | `<ip6intid>`           | optional | IPv6 Interface ID of your Network device                                   |
+  | username  | `<username>`           | optional | If provided name is `proxy` the DNS Record gets proxied through Cloudflare |
 
 ## Usage with FRITZ!Box Router
 
@@ -47,4 +48,4 @@ To use this container with a FRITZ!Box router, follow these steps:
 ## Important Notes
 
 - Ensure that your Cloudflare API token has sufficient permissions to update DNS records for the specified domain
-- The container does not handle authentication for the `/updateDNS` endpoint. 
+- The container does not handle authentication for the `/updateDNS` endpoint.

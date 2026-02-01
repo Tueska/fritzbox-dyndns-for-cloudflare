@@ -42,7 +42,7 @@ async function updateDNS(req, res) {
         proxy = req.query.username.toLowerCase() === 'proxy' ? true : false;
     }
 
-    createZoneRecord(req.query.token, ZONEID, RECORDIDS, req.query.ipaddr, req.query.ip6addr, req.query.domain, proxy);
+    createZoneRecord(req.query.token, ZONEID, RECORDIDS, req.query.ipaddr, req.query.ip6prefix, req.query.ip6intid, req.query.domain, proxy);
 
     res.send('');
 }
@@ -95,9 +95,12 @@ async function getRecordID(token, zoneid, domain) {
     return entries ? entries : null;
 }
 
-async function createZoneRecord(token, zoneid, recordid, ipaddr, ip6addr, domain, proxy) {
+async function createZoneRecord(token, zoneid, recordid, ipaddr, ip6addr, ip6intid, domain, proxy) {
     // loop over recordid and create/update records
+    // log all parameters in console
+    let prefix = ip6addr.replace(/::\/\d+$/, ':');
     for (const [type, id] of Object.entries(recordid)) {
+        if (ipaddr === undefined && type === 'A') continue;
         if (ip6addr === undefined && type === 'AAAA') continue;
         let recordidSlug = id ? `/${id}` : '';
         let method = id ? 'PATCH' : 'POST';
@@ -113,7 +116,7 @@ async function createZoneRecord(token, zoneid, recordid, ipaddr, ip6addr, domain
                 name: domain,
                 proxied: proxy,
                 comment: 'Updated by DynDNS',
-                content: type === 'A' ? ipaddr : ip6addr,
+                content: type === 'A' ? ipaddr : prefix + ip6intid,
             })
         })
 
